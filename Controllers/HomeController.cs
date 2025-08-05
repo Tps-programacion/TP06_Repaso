@@ -17,4 +17,37 @@ public class HomeController : Controller
     {
         return View();
     }
+
+        public IActionResult verTareas()
+    {
+        return View();
+    }
+
+        public IActionResult nuevaTarea()
+    {
+        return View();
+    }
+
+        public IActionResult nuevaTrareaGuardar(string titulo, string descripcion, DateTime fecha)
+    {
+        return View();
+    }
+
+    public IActionResult moverTarea(){
+        return View();
+    }
+
+    public IActionResult moverTareaGuardar()
+    {
+        return View();
+    }
+
+    public IActionResult eliminarTarea()
+    {
+        return View();
+    }
+    public IActionResult eliminarTareaGuardar()
+    {
+        return View();
+    }  
 }
