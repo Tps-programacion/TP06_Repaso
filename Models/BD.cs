@@ -36,7 +36,7 @@ public static class BD
         }
     }
 
-    public static void modificarTarea()
+    public static void modificarTarea(string titulo, string descripcion, DateTime fecha, Tarea tareaAModificar)
     {
 
         
@@ -51,13 +51,14 @@ public static class BD
         }
     }
 
-    public static void verTarea(int IDTarea)
+    public static Tarea verTarea(int IDTarea)
     {
     using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string query = "SELECT * FROM Tarea WHERE IDTarea = @IDTarea";
-            connection.QueryFirstOrDefault <int> (query, new {IDTarea});
+            Tarea tareaBuscada = connection.QueryFirstOrDefault <Tarea> (query, new {IDTarea});
         }
+    return tareaBuscada;
     }
 
     public static void verTareas(int idUsuario)
