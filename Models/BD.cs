@@ -53,10 +53,11 @@ public static class BD
 
     public static Tarea verTarea(int IDTarea)
     {
+        Tarea tareaBuscada;
     using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string query = "SELECT * FROM Tarea WHERE IDTarea = @IDTarea";
-            Tarea tareaBuscada = connection.QueryFirstOrDefault <Tarea> (query, new {IDTarea});
+             tareaBuscada = connection.QueryFirstOrDefault <Tarea> (query, new {IDTarea});
         }
     return tareaBuscada;
     }
