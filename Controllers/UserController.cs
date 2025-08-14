@@ -59,7 +59,7 @@ public IActionResult login(string username, string contraseña)
     
         public IActionResult registro()
     {
-        return View("registro");
+        return View("Registrar");
     }
     
         public IActionResult registroGuardar(string nombre, string apellido, string username, string contraseña, string foto)
@@ -78,7 +78,7 @@ public IActionResult login(string username, string contraseña)
         
         else{
             ViewBag.mensaje("El usuario con el username "+ username + " ya existe.");
-            return View("registro");
+            return View("Registrar");
         }
 
 

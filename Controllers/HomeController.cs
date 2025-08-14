@@ -25,14 +25,14 @@ public class HomeController : Controller
         List<Tarea> tareas = new List<Tarea>();
         tareas = BD.verTareas(id);
         ViewBag.tareas = tareas;
-        return View("tareas");
+        return View("VerTareas");
         
     
     }
 
         public IActionResult nuevaTarea()
     {
-        return View("nuevaTarea");
+        return View("NuevaTarea");
     }
 
         public IActionResult nuevaTrareaGuardar(string titulo, string descripcion, DateTime fecha)
@@ -49,7 +49,7 @@ public class HomeController : Controller
         
         Tarea tareaAModificar = BD.verTarea(idTarea);
         ViewBag.tareaAModificar = tareaAModificar;
-        return View("modificarTarea");
+        return View("ModificarTarea");
     }
 
     public IActionResult modificarTareaGuardar(string titulo, string descripcion, DateTime fecha, int idTarea)
@@ -74,11 +74,11 @@ public class HomeController : Controller
         {
             Tarea tareaAEliminar = BD.verTarea(idTarea);
             BD.eliminarTarea(idTarea);
-            return View("Tareas");
+            return View("ConfirmacionEliminarTarea");
         }
         else
         {
-            return View("vistaTarea");
+            return View("VerTareas");
         }
         
     }  

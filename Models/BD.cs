@@ -67,8 +67,8 @@ public static class BD
         List<Tarea> tareas = new List<Tarea>();
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT * FROM Tareas WHERE IDUsuario = @pid;";
-            tareas = connection.QueryFirstOrDefault <List<Tarea>> (query, new {idUsuario});
+            string query = "SELECT * FROM Tarea WHERE IDUsuario = @idUsuario";
+            tareas = connection.Query<Tarea>(query, new {idUsuario}).ToList();
         }
         return tareas;
     }

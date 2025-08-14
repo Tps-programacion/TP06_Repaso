@@ -5,4 +5,10 @@
 <div>
     <h1>Index</h1>
     <p>Bienvenidos al sitio web de NombreProyecto</p>
+    <p><a href='@Url.Action("verTareas", "Home")'>Ver tareas</a></p>
+    <p><a href='@Url.Action("nuevaTarea", "Home")'>Nueva Tarea</a></p>
+    <p><a href='@Url.Action("modificarTarea", "Home", new { idTarea = 1 })'>Modificar tarea</a></p>
+    <p><a href='@Url.Action("eliminarTarea", "Home", new { idTarea = 1 })'>eliminar tarea</a></p>
+    <p><a href='@Url.Action("login", "User")'>Login</a></p>
+    <p><a href='@Url.Action("registro", "User")'>Registro</a></p>
 </div>
