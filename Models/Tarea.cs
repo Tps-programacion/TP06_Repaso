@@ -24,10 +24,10 @@ public class Tarea
     public int IDUsuario { get; private set; }
 
     public Tarea(string titulo, string descripcion, DateTime fecha, int iDUsuario){
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.fecha = fecha;
+        this.Titulo = titulo;
+        this.Descripcion = descripcion;
+        this.Fecha = fecha;
         this.Finalizada = false;
-        this.iDUsuario = iDUsuario;
+        this.IDUsuario = iDUsuario;
     }
 }

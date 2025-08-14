@@ -58,22 +58,22 @@ public class HomeController : Controller
         // MISMA LOGICA QUE EN NUEVA TAREA
         Tarea tareaAModificar = BD.verTarea(idTarea); 
         BD.modificarTarea(titulo, descripcion, fecha, tareaAModificar);
-        ViewBag.tareaModificada = BD.verTarea(); 
+        ViewBag.tareaModificada = BD.verTarea(idTarea); 
         ViewBag.mensaje("Tarea modificada correctamente");
         return View("Index");
     }
 
-    public IActionResult eliminarTarea(int IDTarea)
+    public IActionResult eliminarTarea(int idTarea)
     {
         ViewBag.tareaAEliminar = BD.verTarea(idTarea);
         return View("EliminarTarea");
     }
-    public IActionResult eliminarTareaGuardar(bool confirmacion,int idTarea)
+    public IActionResult eliminarTareaGuardar(bool confirmacion, int idTarea)
     {
         if (confirmacion == true)
         {
             Tarea tareaAEliminar = BD.verTarea(idTarea);
-            BD.eliminarTarea(tareaAEliminar);
+            BD.eliminarTarea(idTarea);
             return View("Tareas");
         }
         else

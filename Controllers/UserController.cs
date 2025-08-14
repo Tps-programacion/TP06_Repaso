@@ -66,9 +66,9 @@ public IActionResult login(string username, string contraseña)
     {
         DateTime ultimoLogin; 
 
-        Usuario usuarioExiste = BD.getUsuarioUsername(username); // Hacer en bd un getusuario y si no existe que devuelva NULL 
+        int id = BD.logIn(username, contraseña); // Hacer en bd un getusuario y si no existe que devuelva NULL 
 
-        if(usuarioExiste == null){
+        if(id == -1){
             ultimoLogin = DateTime.Today;
             Usuario usuario = new Usuario(nombre, apellido, username, contraseña, foto, ultimoLogin); 
             BD.registro(usuario);

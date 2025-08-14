@@ -53,21 +53,24 @@ public static class BD
 
     public static Tarea verTarea(int IDTarea)
     {
+        Tarea tareaBuscada;
     using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string query = "SELECT * FROM Tarea WHERE IDTarea = @IDTarea";
-            Tarea tareaBuscada = connection.QueryFirstOrDefault <Tarea> (query, new {IDTarea});
+             tareaBuscada = connection.QueryFirstOrDefault <Tarea> (query, new {IDTarea});
         }
     return tareaBuscada;
     }
 
-    public static void verTareas(int idUsuario)
+    public static List<Tarea> verTareas(int idUsuario)
     {
+        List<Tarea> tareas = new List<Tarea>();
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT Tarea. FROM Tarea WHERE IDTarea = @IDTarea";
-            connection.QueryFirstOrDefault <int> (query, new {idUsuario});
+            string query = "SELECT * FROM Tareas WHERE IDUsuario = @pid;";
+            tareas = connection.QueryFirstOrDefault <List<Tarea>> (query, new {idUsuario});
         }
+        return tareas;
     }
 
     public static void aa(){
@@ -76,6 +79,16 @@ public static class BD
 
     public static void regaistro(){
     
+    }
+
+    public static Usuario GetUsuario(int idUsuario){
+        Usuario usuario = null;
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = "SELECT IDUsuario FROM Usuario WHERE id = @idUsuario";
+            idUsuario = connection.QueryFirstOrDefault <int> (query, new {idUsuario});
+        }
+        return usuario;
     }
 
 }
