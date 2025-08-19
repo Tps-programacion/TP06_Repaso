@@ -81,15 +81,15 @@ public static class BD
     
     }
 
-    public static Usuario GetUsuario(int idUsuario){
-        Usuario usuario = null;
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            string query = "SELECT IDUsuario FROM Usuario WHERE id = @idUsuario";
-            idUsuario = connection.QueryFirstOrDefault <int> (query, new {idUsuario});
-        }
-        return usuario;
+public static Usuario GetUsuario(int idUsuario){
+    Usuario usuario = null;
+    using (SqlConnection connection = new SqlConnection(_connectionString))
+    {
+        string query = "SELECT * FROM Usuario WHERE IDUsuario = @idUsuario";
+        usuario = connection.QueryFirstOrDefault<Usuario>(query, new {idUsuario});
     }
+    return usuario;
+}
 
 }
 

@@ -30,6 +30,7 @@ public class HomeController : Controller
         List<Tarea> tareas = new List<Tarea>();
         tareas = BD.verTareas(id);
         ViewBag.tareas = tareas;
+        ViewBag.usuario = BD.GetUsuario(id);
         return View("VerTareas");
         
     
@@ -87,4 +88,12 @@ public class HomeController : Controller
         }
         
     }  
+    public IActionResult finalizarTarea(int idTarea){
+        ViewBag.tareaAFinalizar = BD.verTarea(idTarea);
+        return View("finalizarTarea"); // ESTA VIEW PIDE CONFIRMACION PARA FINALIZAR LA TAREA
+    }
+
+    public IActionResult finalizarTareaGuardar (bool confirmacion, Tarea tareaAFinalizar){
+        return View("finalizarTareaConfirmacion");
+    }
 }

@@ -1,7 +1,7 @@
 namespace TP06_REPASO;
 using Newtonsoft.Json;
 
-public class Usuario 
+public  class Usuario 
 {
     
      [JsonProperty("IDUsuario")]
