@@ -24,6 +24,9 @@ public class Usuario
 
     [JsonProperty("FechaUltimoLog")]
     public DateTime FechaUltimoLog { get; private set;}
+    public Usuario(){
+
+    }
     public Usuario (string Nombre, string Apellido, string Username, string Contraseña, string Foto, DateTime FechaUltimoLog)
     {
     this.Nombre = Nombre;
