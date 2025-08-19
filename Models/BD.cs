@@ -23,7 +23,7 @@ public static class BD
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string query = "INSERT INTO Usuario(IDTarea,Titulo,Descripcion,Fecha,Finalizada,IDUsuario) VALUES (@tarea.IDTarea, @tarea.Titulo, @tarea.Descripcion, @tarea.Fecha, @tarea.Finalizada, @tarea.IDUsuario)";
-            connection.QueryFirstOrDefault <int> (query, new {tarea});
+            connection.Execute (query, new {tarea});
         }
     }
 
@@ -32,22 +32,27 @@ public static class BD
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string query = "INSERT INTO Usuario(Nombre,Apellido,Username,Contraseña,Foto,FechaUltimoLog) VALUES (@usuario.Nombre, @usuario.Apellido, @usuario.Username, @usuario.Contraseña, @usuario.Foto, @usuario.FechaUltimoLog)";
-            connection.QueryFirstOrDefault <int> (query, new {usuario});
+            connection.Execute(query, new {usuario});
         }
     }
 
     public static void modificarTarea(string titulo, string descripcion, DateTime fecha, Tarea tareaAModificar)
     {
-
+      
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = "UPDATE Tarea SET titulo = @titulo, descripcion = @descripcion, fecha = @fecha WHERE, IDTarea = @IDTarea";
+            connection.Execute (query, new {titulo, descripcion, fecha, tareaAModificar.IDTarea});
+        }
         
     }
 
     public static void eliminarTarea(int IDTarea)
     {
+      string query = "DELETE * FROM Tarea WHERE IDTarea = @IDTarea";
       using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "DELETE * FROM Tarea WHERE IDTarea = @IDTarea";
-            connection.QueryFirstOrDefault <int> (query, new {IDTarea});
+            connection.Execute(query, new {IDTarea});
         }
     }
 
@@ -56,7 +61,7 @@ public static class BD
         Tarea tareaBuscada;
     using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT * FROM Tarea WHERE IDTarea = @IDTarea";
+             string query = "SELECT * FROM Tarea WHERE IDTarea = @IDTarea";
              tareaBuscada = connection.QueryFirstOrDefault <Tarea> (query, new {IDTarea});
         }
     return tareaBuscada;
@@ -73,24 +78,31 @@ public static class BD
         return tareas;
     }
 
-    public static void aa(){
-    
+    public static Usuario GetUsuario(int idUsuario){
+        Usuario usuario = null;
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = "SELECT IDUsuario FROM Usuario WHERE id = @idUsuario";
+            idUsuario = connection.QueryFirstOrDefault <int> (query, new {idUsuario});
+        }
+        return usuario;
     }
-
-    public static void regaistro(){
-    
-    }
-
-public static Usuario GetUsuario(int idUsuario){
-    Usuario usuario = null;
-    using (SqlConnection connection = new SqlConnection(_connectionString))
+    public static void FinalizarTarea(int IDTareaFin)
     {
-        string query = "SELECT * FROM Usuario WHERE IDUsuario = @idUsuario";
-        usuario = connection.QueryFirstOrDefault<Usuario>(query, new {idUsuario});
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = "UPDATE Tarea SET Finalizada = 1 WHERE IDTarea = @IDTareaFin";
+            connection.Execute (query, new {IDTareaFin});
+        }
     }
-    return usuario;
-}
-
+   public static void modificarFecha(int IDTarea, DateTime fechaNueva)
+    {
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            string query = "UPDATE Tarea SET fecha = @FechaNueva WHERE IDTarea = @IDTarea";
+            connection.Execute (query, new { IDTarea, FechaNueva = fechaNueva });
+        }
+    }
 }
 
 
