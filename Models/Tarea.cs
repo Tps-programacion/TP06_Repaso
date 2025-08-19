@@ -23,6 +23,9 @@ public class Tarea
     [JsonProperty("IDUsuario")]
     public int IDUsuario { get; private set; }
 
+    public Tarea() { 
+        
+    }
     public Tarea(string titulo, string descripcion, DateTime fecha, int iDUsuario){
         this.Titulo = titulo;
         this.Descripcion = descripcion;

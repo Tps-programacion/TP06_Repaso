@@ -30,7 +30,7 @@ public IActionResult login(string username, string contraseña)
         if (HttpContext.Session.GetString("idUsuario") != null)
         {
             ViewBag.mensaje = "Ya hay un usuario logueado. Para ingresar denuevo primero salga de sesion";
-            return View("Login");
+            return View("login");
 
         }
         else
@@ -50,7 +50,7 @@ public IActionResult login(string username, string contraseña)
             else
             {
                 ViewBag.mensaje = "Uno de los campos o ambos fueron ingresados incorrectamente.";
-                return View("Login");
+                return View("login");
 
             }
 
@@ -59,7 +59,7 @@ public IActionResult login(string username, string contraseña)
     
         public IActionResult registro()
     {
-        return View("Registrar");
+        return View("registrar");
     }
     
         public IActionResult registroGuardar(string nombre, string apellido, string username, string contraseña, string foto)
@@ -78,7 +78,7 @@ public IActionResult login(string username, string contraseña)
         
         else{
             ViewBag.mensaje("El usuario con el username "+ username + " ya existe.");
-            return View("Registrar");
+            return View("registrar");
         }
 
 
