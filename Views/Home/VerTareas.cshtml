@@ -3,7 +3,21 @@
 @foreach (Tarea item in ViewBag.tareas)
 {
     <div>
-        <h2></h2>
+        <h2> @item.Titulo</h2>
+        <p>@item.Descripcion</p>
+        <p>@item.Fecha</p>
+       
+            @if (item.Finalizada == true)
+            {
+                <p>Estado FINALIZADA</p>
+            }
+            else
+            {
+             <p>Estado PENDIENTE</p>   
+            }
+            <p><a href='@Url.Action("modificarTarea", "Home", new { idTarea = @item.IDTarea })'>Modificar tarea</a></p>
+            <p><a href='@Url.Action("eliminarTarea", "Home", new { idTarea = @item.IDTarea })'>Eliminar tarea</a></p>
+            <p><a href='@Url.Action("eliminarTarea", "Home", new { idTarea = @item.IDTarea })'>Eliminar tarea</a></p>
     </div>    
 }
 

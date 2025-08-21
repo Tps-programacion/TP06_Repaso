@@ -78,15 +78,16 @@ public static class BD
         return tareas;
     }
 
-    public static Usuario GetUsuario(int idUsuario){
+    public static Usuario GetUsuario(int IDUsuario){
         Usuario usuario = null;
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT IDUsuario FROM Usuario WHERE id = @idUsuario";
-            idUsuario = connection.QueryFirstOrDefault <int> (query, new {idUsuario});
+            string query = "SELECT * FROM Usuarios WHERE IDUsuario = @IDUsuario";
+            usuario = connection.QueryFirstOrDefault<Usuario>(query, new {IDUsuario});
         }
         return usuario;
     }
+
     public static void FinalizarTarea(int IDTareaFin)
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
