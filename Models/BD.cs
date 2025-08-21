@@ -22,8 +22,8 @@ public static class BD
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "INSERT INTO Usuarios (IDTarea,Titulo,Descripcion,Fecha,Finalizada,IDUsuario) VALUES (@tarea.IDTarea, @tarea.Titulo, @tarea.Descripcion, @tarea.Fecha, @tarea.Finalizada, @tarea.IDUsuario)";
-            connection.Execute (query, new {tarea});
+            string query = "INSERT INTO Tarea (Titulo,Descripcion,Fecha,Finalizada,IDUsuario) VALUES (@Titulo, @Descripcion, @Fecha, @Finalizada, @IDUsuario)";
+            connection.Execute(query, new { Titulo = tarea.Titulo, Descripcion = tarea.Descripcion, Fecha = tarea.Fecha,Finalizada = tarea.Finalizada, IDUsuario = tarea.IDUsuario});
         }
     }
 

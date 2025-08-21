@@ -16,6 +16,9 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         
+           
+        
+        
 
         return View();
 
@@ -43,7 +46,7 @@ public class HomeController : Controller
         id = int.Parse(HttpContext.Session.GetString("idUsuario"));
         Tarea tarea = new Tarea(titulo, descripcion, fecha, id);
         BD.agendarTarea(tarea);
-        ViewBag.mensaje("Tarea agregada correctamente");
+        ViewBag.mensaje = ("Tarea agregada correctamente");
         return View("mensajeTareaAgregada");
     }
 
