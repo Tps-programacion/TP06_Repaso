@@ -1,23 +1,26 @@
-<h1>Tareas de @ViewBag.Usuario.Nombre</h1>
+<header>
+    <h1>Tareas de @ViewBag.Usuario.Nombre</h1>
+</header>
 
-@foreach (Tarea item in ViewBag.tareas)
-{
-    <div>
-        <h2> @item.Titulo</h2>
-        <p>@item.Descripcion</p>
-        <p>@item.Fecha</p>
-       
-            @if (item.Finalizada == true)
+<div class="task-list-container">
+    @foreach (Tarea item in ViewBag.tareas)
+    {
+        <div class="task-item">
+            <h2>@item.Titulo</h2>
+            <p>@item.Descripcion</p>
+            <p>Fecha: @item.Fecha.ToString("dd/MM/yyyy")</p>
+            @if (item.Finalizada)
             {
-                <p>Estado FINALIZADA</p>
+                <p>Estado: FINALIZADA</p>
             }
             else
             {
-             <p>Estado PENDIENTE</p>   
+                <p>Estado: PENDIENTE</p>
             }
-            <p><a href='@Url.Action("modificarTarea", "Home", new { idTarea = @item.IDTarea })'>Modificar tarea</a></p>
-            <p><a href='@Url.Action("eliminarTarea", "Home", new { idTarea = @item.IDTarea })'>Eliminar tarea</a></p>
-            <p><a href='@Url.Action("eliminarTarea", "Home", new { idTarea = @item.IDTarea })'>Eliminar tarea</a></p>
-    </div>    
-}
-
+            <div class="task-actions">
+                <a href='@Url.Action("modificarTarea", "Home", new { idTarea = @item.IDTarea })'>Modificar tarea</a>
+                <a href='@Url.Action("eliminarTarea", "Home", new { idTarea = @item.IDTarea })'>Eliminar tarea</a>
+            </div>
+        </div>
+    }
+</div>
