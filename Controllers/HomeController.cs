@@ -16,10 +16,7 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         
-        if (HttpContext.Session.GetString("idUsuario") == null)
-        {
-            HttpContext.Session.SetString("idUsuario", "1");
-        }
+
         return View();
 
     }

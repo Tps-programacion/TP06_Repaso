@@ -23,7 +23,7 @@ public IActionResult login(string username, string contraseña)
 
         HttpContext.Session.Remove("idUsuario");
         ViewBag.mensaje = "Usted salió correctamente de la sesión.";
-        return View("Index");
+        return View("salidaDeSesion");
     }
     public IActionResult loginGuardar(string username, string contraseña)
     {
@@ -45,7 +45,7 @@ public IActionResult login(string username, string contraseña)
                 ViewBag.usuario = usuarioLogueado;
                 ViewBag.mensaje = "Bienvenido ";
                 HttpContext.Session.SetString("idUsuario", id.ToString());
-                return View("Bienvenida");
+                return View("inicioDeSesion");
             }
             else
             {
