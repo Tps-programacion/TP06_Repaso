@@ -1,1 +1,17 @@
-a
+@{
+    ViewData["Title"] = "Login";
+}
+<header>Iniciar Sesión</header>
+<div class="container">
+    <form method="post" action="/User/loginGuardar">
+        <label>Usuario</label>
+        <input type="text" name="username" required>
+
+        <label>Contraseña</label>
+        <input type="password" name="contraseña" required>
+
+        <button type="submit">Ingresar</button>
+    </form>
+    <a class="link" href="/User/registro">¿No tenés cuenta? Registrate</a>
+</div>
+<footer>Gestor de Tareas</footer>

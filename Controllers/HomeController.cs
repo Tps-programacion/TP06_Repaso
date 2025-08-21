@@ -32,8 +32,6 @@ public class HomeController : Controller
         ViewBag.tareas = tareas;
         ViewBag.usuario = BD.GetUsuario(id);
         return View("VerTareas");
-        
-    
     }
 
         public IActionResult nuevaTarea()

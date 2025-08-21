@@ -1,23 +1,104 @@
-html {
-  font-size: 14px;
-  min-height: 100%;
-}
-
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
+/* General body and typography styles */
 body {
-  margin: 10px;
-  padding: 10px;
+  background-color: #6072FF;
+  color: #FFFFFF;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
+/* Header and footer styles */
+header,
+footer {
+  background-color: #2D408A;
+  color: #FFFFFF;
+  padding: 20px;
+  text-align: center;
+}
 
 footer {
-  margin-top: 10px;
+  margin-top: auto;
+}
+
+/* Main content container */
+.container {
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #875F51;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Added for spacing between elements inside the container */
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  color: #FFFFFF;
+  text-align: center;
+}
+
+/* Links */
+.link,
+a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link:hover,
+a:hover {
+  text-decoration: underline;
+}
+
+/* Form styles */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%; /* Ensures the form takes up the container's width */
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"], input[type="password"], input[type="date"], textarea {
+  width: 98%;
   padding: 10px;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
+  border: none;
+  border-radius: 5px;
+  background-color: #8E9499;
+  color: #FFFFFF;
+}
+
+button, input[type="submit"] {
+  background-color: #8E9499;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+  background-color: #2D408A;
+}
+
+/* Card or information blocks */
+.info-block {
+  background-color: #875F51;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }

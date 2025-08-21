@@ -1,6 +1,21 @@
-<form action='@Url.Action("nuevaTrareaGuardar", "Home")'>
-    <input type="text" name="titulo">
-    <input type="text" name="descripcion">
-    <input type="date" name="fecha">
-    <input type="int" name="iDUsuario">
-</form>
+@{
+    ViewData["Title"] = "Nueva Tarea";
+}
+<header>
+    <h1>Nueva Tarea</h1>
+</header>
+
+<div class="container">
+    <form method="post" action="/Home/nuevaTrareaGuardar">
+        <label>Título</label>
+        <input type="text" name="titulo" required>
+
+        <label>Descripción</label>
+        <textarea name="descripcion" rows="4" required></textarea>
+
+        <label>Fecha</label>
+        <input type="date" name="fecha" required>
+
+        <button type="submit">Guardar</button>
+    </form>
+</div>

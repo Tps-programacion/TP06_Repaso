@@ -1,0 +1,16 @@
+@{
+    ViewData["Title"] = "Eliminar Tarea";
+    var tarea = ViewBag.tareaAEliminar;
+}
+<header>Eliminar Tarea</header>
+<div class="container">
+    <h2>¿Seguro que querés eliminar esta tarea?</h2>
+    <p><b>@tarea.Titulo</b></p>
+    <p>@tarea.Descripcion</p>
+    <form method="post" action="/Home/eliminarTareaGuardar">
+        <input type="hidden" name="idTarea" value="@tarea.IDTarea">
+        <button type="submit" name="confirmacion" value="true">Sí, eliminar</button>
+        <button type="submit" name="confirmacion" value="false">Cancelar</button>
+    </form>
+</div>
+<footer>Gestor de Tareas</footer>

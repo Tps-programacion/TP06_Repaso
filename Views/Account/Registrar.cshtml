@@ -1,1 +1,26 @@
-a
+@{
+    ViewData["Title"] = "Registrar";
+}
+<header>Registrarse</header>
+<div class="container">
+    <form method="post" action="/User/registroGuardar">
+        <label>Nombre</label>
+        <input type="text" name="nombre" required>
+
+        <label>Apellido</label>
+        <input type="text" name="apellido" required>
+
+        <label>Usuario</label>
+        <input type="text" name="username" required>
+
+        <label>Contraseña</label>
+        <input type="password" name="contraseña" required>
+
+        <label>Foto (URL)</label>
+        <input type="text" name="foto">
+
+        <button type="submit">Crear cuenta</button>
+    </form>
+    <a class="link" href="/User/login">¿Ya tenés cuenta? Ingresá</a>
+</div>
+<footer>Gestor de Tareas</footer>

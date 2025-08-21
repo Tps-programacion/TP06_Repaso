@@ -11,7 +11,7 @@ public static class BD
         int idUsuario = -1;
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT IDUsuario FROM Usuario WHERE username = @username AND contraseña = @contraseña";
+            string query = "SELECT IDUsuario FROM Usuarios WHERE username = @username AND contraseña = @contraseña";
             idUsuario = connection.QueryFirstOrDefault <int> (query, new {username,contraseña});
         }
         return idUsuario;
@@ -22,7 +22,7 @@ public static class BD
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "INSERT INTO Usuario(IDTarea,Titulo,Descripcion,Fecha,Finalizada,IDUsuario) VALUES (@tarea.IDTarea, @tarea.Titulo, @tarea.Descripcion, @tarea.Fecha, @tarea.Finalizada, @tarea.IDUsuario)";
+            string query = "INSERT INTO Usuarios (IDTarea,Titulo,Descripcion,Fecha,Finalizada,IDUsuario) VALUES (@tarea.IDTarea, @tarea.Titulo, @tarea.Descripcion, @tarea.Fecha, @tarea.Finalizada, @tarea.IDUsuario)";
             connection.Execute (query, new {tarea});
         }
     }
@@ -31,7 +31,7 @@ public static class BD
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "INSERT INTO Usuario(Nombre,Apellido,Username,Contraseña,Foto,FechaUltimoLog) VALUES (@usuario.Nombre, @usuario.Apellido, @usuario.Username, @usuario.Contraseña, @usuario.Foto, @usuario.FechaUltimoLog)";
+            string query = "INSERT INTO Usuarios (Nombre,Apellido,Username,Contraseña,Foto,FechaUltimoLog) VALUES (@usuario.Nombre, @usuario.Apellido, @usuario.Username, @usuario.Contraseña, @usuario.Foto, @usuario.FechaUltimoLog)";
             connection.Execute(query, new {usuario});
         }
     }
@@ -67,23 +67,23 @@ public static class BD
     return tareaBuscada;
     }
 
-    public static List<Tarea> verTareas(int idUsuario)
+    public static List<Tarea> verTareas(int IDUsuario)
     {
         List<Tarea> tareas = new List<Tarea>();
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT * FROM Tarea WHERE IDUsuario = @idUsuario";
-            tareas = connection.Query<Tarea>(query, new {idUsuario}).ToList();
+            string query = "SELECT * FROM Tarea WHERE IDUsuario = @IDUsuario";
+            tareas = connection.Query<Tarea>(query, new {IDUsuario}).ToList();
         }
         return tareas;
     }
 
-    public static Usuario GetUsuario(int idUsuario){
+    public static Usuario GetUsuario(int IDUsuario){
         Usuario usuario = null;
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT IDUsuario FROM Usuario WHERE id = @idUsuario";
-            idUsuario = connection.QueryFirstOrDefault <int> (query, new {idUsuario});
+            string query = "SELECT * FROM Usuarios WHERE IDUsuario = @IDUsuario";
+            usuario = connection.QueryFirstOrDefault <Usuario> (query, new {IDUsuario});
         }
         return usuario;
     }
