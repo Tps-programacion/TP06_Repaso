@@ -83,10 +83,11 @@ public static class BD
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
             string query = "SELECT * FROM Usuarios WHERE IDUsuario = @IDUsuario";
-            usuario = connection.QueryFirstOrDefault <Usuario> (query, new {IDUsuario});
+            usuario = connection.QueryFirstOrDefault<Usuario>(query, new {IDUsuario});
         }
         return usuario;
     }
+
     public static void FinalizarTarea(int IDTareaFin)
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))

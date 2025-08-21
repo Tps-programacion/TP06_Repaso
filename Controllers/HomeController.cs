@@ -15,6 +15,7 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        
         if (HttpContext.Session.GetString("idUsuario") == null)
         {
             HttpContext.Session.SetString("idUsuario", "1");
@@ -76,13 +77,20 @@ public class HomeController : Controller
     {
         if (confirmacion == true)
         {
-            Tarea tareaAEliminar = BD.verTarea(idTarea);
+            ViewBag.tareaAEliminar = BD.verTarea(idTarea);
             BD.eliminarTarea(idTarea);
             return View("ConfirmacionEliminarTarea");
         }
         else
         {
+            int id;
+            id = int.Parse(HttpContext.Session.GetString("idUsuario"));
+            List<Tarea> tareas = new List<Tarea>();
+            tareas = BD.verTareas(id);
+            ViewBag.tareas = tareas;
+            ViewBag.usuario = BD.GetUsuario(id);
             return View("VerTareas");
+
         }
         
     }  
@@ -92,6 +100,22 @@ public class HomeController : Controller
     }
 
     public IActionResult finalizarTareaGuardar (bool confirmacion, Tarea tareaAFinalizar){
-        return View("finalizarTareaConfirmacion");
+        if(confirmacion == true){
+            ViewBag.tareaFinalizada = tareaAFinalizar;
+            BD.FinalizarTarea(tareaAFinalizar.IDTarea);
+            return View("finalizarTareaConfirmacion");
+
+        }
+        else{
+            int id;
+            id = int.Parse(HttpContext.Session.GetString("idUsuario"));
+            List<Tarea> tareas = new List<Tarea>();
+            tareas = BD.verTareas(id);
+            ViewBag.tareas = tareas;
+            ViewBag.usuario = BD.GetUsuario(id);
+            return View("verTareas");
+        }
+
     }
+    
 }
