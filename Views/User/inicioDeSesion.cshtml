@@ -1,2 +1,17 @@
-<p>@ViewBag.mensaje</p>
-<a class="link" href="/Home/Index">Volver a index</a>
+@{
+    ViewData["Title"] = "Bienvenido";
+}
+
+<header>
+    <h1>Bienvenido a la aplicación</h1>
+</header>
+
+<main class="container">
+    <h2>Has iniciado sesión correctamente</h2>
+    <p>Ahora puedes acceder a todas tus tareas y funcionalidades.</p>
+
+    <div class="task-actions">
+        <a class="link" href="/Tareas/VerTareas">Ver mis tareas</a>
+        <a class="link" href="/Home/Salir">Cerrar sesión</a>
+    </div>
+</main>

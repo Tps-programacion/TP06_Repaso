@@ -1,2 +1,13 @@
-<p>@ViewBag.mensaje</p>
-<a class="link" href="/Home/Index">Volver a index</a>
+@{
+    ViewData["Title"] = "Salida de Sesión";
+}
+
+<header>
+    <h1>Sesión Finalizada</h1>
+</header>
+
+<main class="container">
+    <h2>Has cerrado sesión correctamente.</h2>
+    <p>Gracias por usar la aplicación. Te esperamos pronto.</p>
+    <a class="link" href="/User/login">Volver a Iniciar Sesión</a>
+</main>

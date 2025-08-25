@@ -1,2 +1,13 @@
-<p>@ViewBag.mensaje</p>
-<a class="link" href="/Home/Index">Volver a index</a>
+@{
+    ViewData["Title"] = "Registro Correcto";
+}
+
+<header>
+    <h1>Registro Exitoso</h1>
+</header>
+
+<main class="container">
+    <h2>¡Tu registro se ha completado con éxito!</h2>
+    <p>Puedes iniciar sesión ahora para comenzar a usar la aplicación.</p>
+    <a class="link" href="/User/login">Ir a Iniciar Sesión</a>
+</main>
