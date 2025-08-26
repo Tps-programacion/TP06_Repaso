@@ -15,25 +15,26 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        
-           
-        
-        
 
         return View();
 
     }
 
-        public IActionResult verTareas()
+public IActionResult verTareas()
+{
+    string idUsuarioString = HttpContext.Session.GetString("idUsuario");
+
+    if (string.IsNullOrEmpty(idUsuarioString))
     {
-        int id;
-        id = int.Parse(HttpContext.Session.GetString("idUsuario"));
-        List<Tarea> tareas = new List<Tarea>();
-        tareas = BD.verTareas(id);
-        ViewBag.tareas = tareas;
-        ViewBag.usuario = BD.GetUsuario(id);
-        return View("VerTareas");
+        return RedirectToAction("login","User");
     }
+
+    int id = int.Parse(idUsuarioString);
+    List<Tarea> tareas = BD.verTareas(id);
+    ViewBag.tareas = tareas;
+    ViewBag.usuario = BD.GetUsuario(id);
+    return View("VerTareas");
+}
 
         public IActionResult nuevaTarea()
     {
@@ -61,10 +62,20 @@ public class HomeController : Controller
     {
         //CUANDO SE RETURNEEN LAS TAREAS POR CADA TAREA QUE HAYA UN LINK QUE PERMITA EDITAR Y ELMINAR ESA MISMA TAREA
         // MISMA LOGICA QUE EN NUEVA TAREA
+        
         Tarea tareaAModificar = BD.verTarea(idTarea); 
-        BD.modificarTarea(titulo, descripcion, fecha, tareaAModificar);
+        if (tareaAModificar == null)
+        {
+            ViewBag.MensajeError = "La tarea que intentas modificar no existe.";
+            return View("Index");
+
+        }
+        tareaAModificar.Titulo = titulo;
+        tareaAModificar.Descripcion = descripcion;
+        tareaAModificar.Fecha = fecha;
+        BD.modificarTarea(tareaAModificar);
         ViewBag.tareaModificada = BD.verTarea(idTarea); 
-        ViewBag.mensaje("Tarea modificada correctamente");
+        ViewBag.mensaje = "Tarea modificada correctamente";
         return View("Index");
     }
 
@@ -77,9 +88,8 @@ public class HomeController : Controller
     {
         if (confirmacion == true)
         {
-            ViewBag.tareaAEliminar = BD.verTarea(idTarea);
             BD.eliminarTarea(idTarea);
-            return View("ConfirmacionEliminarTarea");
+           return RedirectToAction("verTareas");
         }
         else
         {

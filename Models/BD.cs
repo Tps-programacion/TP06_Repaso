@@ -36,22 +36,22 @@ public static class BD
         }
     }
 
-    public static void modificarTarea(string titulo, string descripcion, DateTime fecha, Tarea tareaAModificar)
+    public static void modificarTarea(Tarea tareaAModificar)
     {
       
         using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            string query = "UPDATE Tarea SET titulo = @titulo, descripcion = @descripcion, fecha = @fecha WHERE, IDTarea = @IDTarea";
-            connection.Execute (query, new {titulo, descripcion, fecha, tareaAModificar.IDTarea});
+        {   
+        string query = "UPDATE Tarea SET Titulo = @Titulo, Descripcion = @Descripcion, Fecha = @Fecha WHERE IDTarea = @IDTarea";
+        connection.Execute(query, tareaAModificar);
         }
         
     }
 
     public static void eliminarTarea(int IDTarea)
     {
-      string query = "DELETE * FROM Tarea WHERE IDTarea = @IDTarea";
       using (SqlConnection connection = new SqlConnection(_connectionString))
         {
+            string query = "DELETE FROM Tarea WHERE IDTarea = @IDTarea";
             connection.Execute(query, new {IDTarea});
         }
     }

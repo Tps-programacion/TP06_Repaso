@@ -4,25 +4,19 @@ using Newtonsoft.Json;
 public  class Usuario 
 {
     
-     [JsonProperty("IDUsuario")]
     public int IDUsuario { get; private set; }
 
-    [JsonProperty("Nombre")]
+ 
     public string Nombre { get; private set; }
 
-    [JsonProperty("Apellido")]
     public string Apellido { get; private set; }
 
-    [JsonProperty("Username")]
     public string Username { get; private set; }
 
-    [JsonProperty("Contraseña")]
     public string Contraseña { get; private set; }
 
-    [JsonProperty("Foto")]
     public string Foto { get; private set; }
 
-    [JsonProperty("FechaUltimoLog")]
     public DateTime FechaUltimoLog { get; private set;}
     public Usuario(){
 

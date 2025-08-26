@@ -11,7 +11,6 @@ body {
   min-height: 100vh;
 }
 
-/* Header and footer styles */
 header,
 footer {
   background-color: #2D408A;
@@ -24,7 +23,6 @@ footer {
   margin-top: auto;
 }
 
-/* Main content container */
 .container {
   max-width: 960px;
   margin: 40px auto;
@@ -38,7 +36,6 @@ footer {
   gap: 15px;
 }
 
-/* Headings */
 h1,
 h2,
 h3 {
@@ -46,7 +43,6 @@ h3 {
   text-align: center;
 }
 
-/* Links */
 .link,
 a {
   color: #FFFFFF;
@@ -59,7 +55,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Form styles */
 form {
   display: flex;
   flex-direction: column;
@@ -75,7 +70,7 @@ input[type="text"],
 input[type="password"],
 input[type="date"],
 textarea {
-  width: 100%;
+  width: 98%;
   padding: 10px;
   border: none;
   border-radius: 5px;

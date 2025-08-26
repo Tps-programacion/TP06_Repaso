@@ -9,21 +9,22 @@ public class Tarea
     public int IDTarea { get; private set; }
 
     [JsonProperty("Titulo")]
-    public string Titulo { get; private set; }
+    public string Titulo { get; set; }
 
     [JsonProperty("Descripcion")]
-    public string Descripcion { get; private set; }
+    public string Descripcion { get; set; }
 
     [JsonProperty("Fecha")]
-    public DateTime Fecha { get; private set; }
+    public DateTime Fecha { get; set; }
 
     [JsonProperty("Finalizada")]
-    public bool Finalizada { get; private set; }
+    public bool Finalizada { get; set; }
 
     [JsonProperty("IDUsuario")]
     public int IDUsuario { get; private set; }
 
-    public Tarea() { 
+    public Tarea() 
+    { 
         
     }
     public Tarea(string titulo, string descripcion, DateTime fecha, int iDUsuario){
